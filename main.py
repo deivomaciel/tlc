@@ -3,6 +3,7 @@ import multiprocessing
 import time
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import os
 
 class LLM:
   def __init__(self, repo_id: str, model_filename: str) -> None:
@@ -72,4 +73,6 @@ def getLLMResponse():
   return jsonify({'message': response})
 
 if __name__ == '__main__':
-    app.run(port=3001)
+    port = int(os.environ.get("PORT", 5000)) 
+    app.run(port=port)
+  
