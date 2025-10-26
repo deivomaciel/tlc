@@ -56,7 +56,7 @@ class LLM:
         stream=True
     ): print(chunks["choices"][0]["text"], end="", flush=True)
 
-llm = LLM("bartowski/gemma-2-2b-it-GGUF", "gemma-2-2b-it-Q4_K_M.gguf")
+llm = LLM("unsloth/gemma-3-270m-it-GGUF", "gemma-3-270m-it-Q5_K_M.gguf")
 llm.init()
 
 app = Flask(__name__)
