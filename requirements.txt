@@ -1,3 +1,4 @@
 flask==3.1.2
 flask-cors==6.0.1
 llama-cpp-python==0.3.16
+huggingface_hub==0.36.0
