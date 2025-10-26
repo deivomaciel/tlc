@@ -35,19 +35,7 @@ class LLM:
       Se não souber algo, diga que não tem certeza.
     """
 
-    # response = self.__llm.create_completion(
-    #     prompt= f"{system_prompt}\nUsuário: {prompt}\nResposta:",
-    #     max_tokens=max_tokens,
-    #     temperature=0.3,
-    #     top_p=0.9,
-    #     repeat_penalty=1.15,
-    #     echo=False,
-    #     stream=True
-    # )
-
-    # return response["choices"][0]["text"]
-
-    for chunks in self.__llm.create_completion(
+    response = self.__llm.create_completion(
         prompt= f"{system_prompt}\nUsuário: {prompt}\nResposta:",
         max_tokens=max_tokens,
         temperature=0.3,
@@ -55,7 +43,19 @@ class LLM:
         repeat_penalty=1.15,
         echo=False,
         stream=True
-    ): print(chunks["choices"][0]["text"], end="", flush=True)
+    )
+
+    return response["choices"][0]["text"]
+
+    # for chunks in self.__llm.create_completion(
+    #     prompt= f"{system_prompt}\nUsuário: {prompt}\nResposta:",
+    #     max_tokens=max_tokens,
+    #     temperature=0.3,
+    #     top_p=0.9,
+    #     repeat_penalty=1.15,
+    #     echo=False,
+    #     stream=True
+    # ): print(chunks["choices"][0]["text"], end="", flush=True)
 
 llm = LLM("unsloth/gemma-3-270m-it-GGUF", "gemma-3-270m-it-Q5_K_M.gguf")
 llm.init()
