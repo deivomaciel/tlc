@@ -49,7 +49,6 @@ class LLM:
         response_text = ""
         for chunk in response_generator:
             response_text += chunk["choices"][0]["text"]
-            break
 
         return response_text
 
